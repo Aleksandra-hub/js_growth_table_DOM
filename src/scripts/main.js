@@ -10,18 +10,20 @@ const trMain = document.getElementsByTagName('tr');
 btnRowPlus.onclick = () => {
   const tr = document.createElement('tr');
 
-  for (let i = 1; i <= trMain[0].cells.length; i++) {
-    const td = document.createElement('td');
+  if (trMain) {
+    for (let i = 1; i <= trMain[0].cells.length; i++) {
+      const td = document.createElement('td');
 
-    tr.appendChild(td);
+      tr.appendChild(td);
+    }
+    table.appendChild(tr);
   }
-  table.appendChild(tr);
 };
 
 btnRowMinus.onclick = () => {
   const el = document.getElementsByTagName('tr');
 
-  el[0].remove();
+  el[el.length - 1].remove();
 };
 
 btnColPlus.onclick = () => {
@@ -36,7 +38,7 @@ btnColMinus.onclick = () => {
   for (let i = 0; i < table.rows.length; i++) {
     const td = trMain[i].cells;
 
-    td[table.rows.length - 1].remove();
+    td[td.length - 1].remove();
   }
 };
 //
