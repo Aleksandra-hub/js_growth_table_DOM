@@ -10,7 +10,9 @@ const trMain = document.getElementsByTagName('tr');
 btnRowPlus.onclick = () => {
   const tr = document.createElement('tr');
 
-  if (trMain) {
+  // console.log(trMain);
+
+  if (trMain.length > 0) {
     for (let i = 1; i <= trMain[0].cells.length; i++) {
       const td = document.createElement('td');
 
@@ -21,9 +23,11 @@ btnRowPlus.onclick = () => {
 };
 
 btnRowMinus.onclick = () => {
-  const el = document.getElementsByTagName('tr');
+  if (trMain.length > 4) {
+    const el = document.getElementsByTagName('tr');
 
-  el[el.length - 1].remove();
+    el[el.length - 1].remove();
+  }
 };
 
 btnColPlus.onclick = () => {
@@ -35,10 +39,12 @@ btnColPlus.onclick = () => {
 };
 
 btnColMinus.onclick = () => {
-  for (let i = 0; i < table.rows.length; i++) {
-    const td = trMain[i].cells;
+  if (trMain[0].cells.length > 4) {
+    for (let i = 0; i < table.rows.length; i++) {
+      const td = trMain[i].cells;
 
-    td[td.length - 1].remove();
+      td[td.length - 1].remove();
+    }
   }
 };
 //
